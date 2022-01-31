@@ -406,3 +406,8 @@ class AdvisorInterface:
         self.die_3_image.config(state=ACTIVE)
         self.die_4_image.config(state=ACTIVE)
         self.die_5_image.config(state=ACTIVE)
+
+    # Checks how many score categories have not been scored, then returns an integer with the turns remaining.
+    def check_remaining_turns(self):
+        self.turns_remaining = int
+
