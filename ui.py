@@ -1,4 +1,6 @@
 from tkinter import *
+
+from matplotlib.pyplot import text
 from calculator import Calculator
 import random
 
@@ -45,99 +47,205 @@ class AdvisorInterface:
         self.photo_reroll_6 = PhotoImage(file="images/120px-Dice-6.png")
 
         # Upper Section labels and Scores Table
-        self.top_half_label = Label(text="Upper Section", font=HEADER, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.top_half_label = Label(text="Upper Section", 
+                                    font=HEADER,
+                                    bg=THEME_COLOR,
+                                    fg=HEADER_COLOR)
         self.top_half_label.grid(row=0, column=0, columnspan=2, pady=[0, 20])
 
-        self.aces_label = Label(text="Aces ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.aces_label = Label(text="Aces ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.aces_label.grid(row=1, column=0, sticky="E")
-        self.aces_score = Label(text=f"{self.top_half_scores[0]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.aces_score = Label(text=f"{self.top_half_scores[0]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.aces_score.grid(row=1, column=1, sticky="W")
 
-        self.twos_label = Label(text="Twos ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.twos_label = Label(text="Twos ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.twos_label.grid(row=2, column=0, sticky="E")
-        self.twos_score = Label(text=f"{self.top_half_scores[1]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.twos_score = Label(text=f"{self.top_half_scores[1]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.twos_score.grid(row=2, column=1, sticky="W")
 
-        self.threes_label = Label(text="Threes ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.threes_label = Label(text="Threes ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=TEXT_COLOR)
         self.threes_label.grid(row=3, column=0, sticky="E")
-        self.threes_score = Label(text=f"{self.top_half_scores[2]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.threes_score = Label(text=f"{self.top_half_scores[2]}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.threes_score.grid(row=3, column=1, sticky="W")
 
-        self.fours_label = Label(text="Fours ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.fours_label = Label(text="Fours ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.fours_label.grid(row=4, column=0, sticky="E")
-        self.fours_score = Label(text=f"{self.top_half_scores[3]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.fours_score = Label(text=f"{self.top_half_scores[3]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.fours_score.grid(row=4, column=1, sticky="W")
 
-        self.fives_label = Label(text="Fives ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.fives_label = Label(text="Fives ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.fives_label.grid(row=5, column=0, sticky="E")
-        self.fives_score = Label(text=f"{self.top_half_scores[4]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.fives_score = Label(text=f"{self.top_half_scores[4]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.fives_score.grid(row=5, column=1, sticky="W")
 
-        self.sixes_label = Label(text="Sixes ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.sixes_label = Label(text="Sixes ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.sixes_label.grid(row=6, column=0, sticky="E")
-        self.sixes_score = Label(text=f"{self.top_half_scores[5]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.sixes_score = Label(text=f"{self.top_half_scores[5]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.sixes_score.grid(row=6, column=1, sticky="W")
 
-        self.bonus_label = Label(text="Bonus ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.bonus_label = Label(text="Bonus ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.bonus_label.grid(row=7, column=0, sticky="E")
-        self.bonus_score = Label(text=f"{calculator.top_half_bonus}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.bonus_score = Label(text=f"{calculator.top_half_bonus}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.bonus_score.grid(row=7, column=1, sticky="W")
 
-        self.top_total_label = Label(text="Total ", font=BODY, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.top_total_label = Label(text="Total ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=HEADER_COLOR)
         self.top_total_label.grid(row=8, column=0, sticky="E")
-        self.top_total_score = Label(text=f"{calculator.top_half_total}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.top_total_score = Label(text=f"{calculator.top_half_total}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.top_total_score.grid(row=8, column=1, sticky="W")
 
         # Lower Section Labels and Scores Table
-        self.top_half_label = Label(text="Lower Section ", font=HEADER, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.top_half_label = Label(text="Lower Section ",
+                                    font=HEADER,
+                                    bg=THEME_COLOR,
+                                    fg=HEADER_COLOR)
         self.top_half_label.grid(row=0, column=3, columnspan=2, pady=[0, 20])
 
-        self.three_x_label = Label(text="Three of a Kind ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.three_x_label = Label(text="Three of a Kind ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=TEXT_COLOR)
         self.three_x_label.grid(row=1, column=3, sticky="E")
-        self.sixes_score = Label(text=f"{self.bottom_half_scores[0]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.sixes_score = Label(text=f"{self.bottom_half_scores[0]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.sixes_score.grid(row=1, column=4, sticky="W")
 
-        self.four_x_label = Label(text="Four of a Kind ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.four_x_label = Label(text="Four of a Kind ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.four_x_label.grid(row=2, column=3, sticky="E")
-        self.four_x_score = Label(text=f"{self.bottom_half_scores[1]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.four_x_score = Label(text=f"{self.bottom_half_scores[1]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.four_x_score.grid(row=2, column=4, sticky="W")
 
-        self.full_house_label = Label(text="Full House ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.full_house_label = Label(text="Full House ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=TEXT_COLOR)
         self.full_house_label.grid(row=3, column=3, sticky="E")
-        self.full_house_score = Label(text=f"{self.bottom_half_scores[2]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.full_house_score = Label(text=f"{self.bottom_half_scores[2]}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.full_house_score.grid(row=3, column=4, sticky="W")
 
-        self.small_straight_label = Label(text="Small Straight ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.small_straight_label = Label(text="Small Straight ",
+                                        font=BODY,
+                                        bg=THEME_COLOR,
+                                        fg=TEXT_COLOR)
         self.small_straight_label.grid(row=4, column=3, sticky="E")
-        self.small_straight_score = Label(text=f"{self.bottom_half_scores[3]}", font=BODY, bg=THEME_COLOR,
-                                          fg=SCORE_COLOR)
+        self.small_straight_score = Label(text=f"{self.bottom_half_scores[3]}",
+                                        font=BODY,
+                                        bg=THEME_COLOR,
+                                        fg=SCORE_COLOR)
         self.small_straight_score.grid(row=4, column=4, sticky="W")
 
-        self.large_straight_label = Label(text="Large Straight ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.large_straight_label = Label(text="Large Straight ",
+                                        font=BODY,
+                                        bg=THEME_COLOR,
+                                        fg=TEXT_COLOR)
         self.large_straight_label.grid(row=5, column=3, sticky="E")
-        self.large_straight_score = Label(text=f"{self.bottom_half_scores[4]}", font=BODY, bg=THEME_COLOR,
-                                          fg=SCORE_COLOR)
+        self.large_straight_score = Label(text=f"{self.bottom_half_scores[4]}",
+                                        font=BODY,
+                                        bg=THEME_COLOR,
+                                        fg=SCORE_COLOR)
         self.large_straight_score.grid(row=5, column=4, sticky="W")
 
-        self.yahtzee_label = Label(text="Yahtzee ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.yahtzee_label = Label(text="Yahtzee ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=TEXT_COLOR)
         self.yahtzee_label.grid(row=6, column=3, sticky="E")
-        self.yahtzee_score = Label(text=f"{self.bottom_half_scores[5]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.yahtzee_score = Label(text=f"{self.bottom_half_scores[5]}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.yahtzee_score.grid(row=6, column=4, sticky="W")
 
-        self.chance_label = Label(text="Chance ", font=BODY, bg=THEME_COLOR, fg=TEXT_COLOR)
+        self.chance_label = Label(text="Chance ",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=TEXT_COLOR)
         self.chance_label.grid(row=7, column=3, sticky="E")
-        self.chance_score = Label(text=f"{self.bottom_half_scores[6]}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.chance_score = Label(text=f"{self.bottom_half_scores[6]}",
+                                font=BODY,
+                                bg=THEME_COLOR,
+                                fg=SCORE_COLOR)
         self.chance_score.grid(row=7, column=4, sticky="W")
 
-        self.bottom_total_label = Label(text="Total ", font=BODY, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.bottom_total_label = Label(text="Total ",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=HEADER_COLOR)
         self.bottom_total_label.grid(row=8, column=3, sticky="E")
-        self.bottom_total_score = Label(text=f"{self.bottom_half_total}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.bottom_total_score = Label(text=f"{self.bottom_half_total}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.bottom_total_score.grid(row=8, column=4, sticky="W")
 
         # Grand Total
-        self.grand_total_label = Label(text="Grand Total", font=HEADER, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.grand_total_label = Label(text="Grand Total",
+                                        font=HEADER,
+                                        bg=THEME_COLOR,
+                                        fg=HEADER_COLOR)
         self.grand_total_label.grid(row=8, column=2)
-        self.grand_total_score = Label(text=f"{self.bottom_half_total}", font=HEADER, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.grand_total_score = Label(text=f"{self.bottom_half_total}",
+                                        font=HEADER,
+                                        bg=THEME_COLOR,
+                                        fg=SCORE_COLOR)
         self.grand_total_score.grid(row=9, column=2)
 
         # Create Die Image Buttons
@@ -182,15 +290,27 @@ class AdvisorInterface:
         self.die_5_image.grid(row=12, column=4, pady=50)
 
         # Create Advisor info panels
-        self.rolls_remaining_label = Label(text=f"Rolls Remaining:", font=BODY, bg=THEME_COLOR, fg=HEADER_COLOR)
+        # NEED TO ADD TURNS REMAINING LABEL AND FIELD
+
+        self.rolls_remaining_label = Label(text=f"Rolls Remaining:",
+                                            font=BODY,
+                                            bg=THEME_COLOR,
+                                            fg=HEADER_COLOR)
         self.rolls_remaining_label.grid(row=14, column=0, sticky="W")
-        self.rolls_remaining_number = Label(text=f"{self.rolls_remaining}", font=BODY, bg=THEME_COLOR,
+        self.rolls_remaining_number = Label(text=f"{self.rolls_remaining}",
+                                            font=BODY,
+                                            bg=THEME_COLOR,
                                             fg=SCORE_COLOR)
         self.rolls_remaining_number.grid(row=14, column=1, sticky="W")
-
-        self.strategy_label = Label(text=f"Current Strategy:", font=BODY, bg=THEME_COLOR, fg=HEADER_COLOR)
+        self.strategy_label = Label(text=f"Current Strategy:",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=HEADER_COLOR)
         self.strategy_label.grid(row=15, column=0, sticky="W")
-        self.strategy_string = Label(text=f"{self.rolls_remaining}", font=BODY, bg=THEME_COLOR, fg=SCORE_COLOR)
+        self.strategy_string = Label(text=f"{self.rolls_remaining}",
+                                    font=BODY,
+                                    bg=THEME_COLOR,
+                                    fg=SCORE_COLOR)
         self.strategy_string.grid(row=15, column=1, sticky="W")
 
         self.roll_dice_button = Button(text="Roll the Dice",
@@ -207,6 +327,8 @@ class AdvisorInterface:
 
     # Updates the rolls remaining, current strategy and die images
     def update_dice(self):
+        self.turns_remaining()
+        self.turns_remaining_number.confog(text=f"{self.turns_remaining}")
         self.rolls_remaining_number.config(text=f"{self.rolls_remaining}")
         for index, die in enumerate(self.hand_list):
             if die == - 6:
@@ -378,7 +500,8 @@ class AdvisorInterface:
             self.hand_list[4] *= -1
             self.update_dice()
 
-    # Search the hand_list and reroll all dice that have been marked (negative value or 0) then adjust rolls
+    # Search the hand_list and reroll all dice that have been marked 
+    # (negative value or 0) then adjust rolls
     # remaining variable
     def roll_marked_dice(self):
         for index, die in enumerate(self.hand_list):
@@ -396,7 +519,8 @@ class AdvisorInterface:
             self.die_5_image.config(state=DISABLED)
         print(self.hand_list)
 
-    # Scores had based on current strategy, resets hand and rolls remaining to initial state, activates the dice buttons
+    # Scores had based on current strategy, resets hand and rolls remaining to 
+    # initial state, activates the dice buttons
     def score_current_hand(self):
         self.rolls_remaining = 3
         self.hand_list = [0, 0, 0, 0, 0]
@@ -407,7 +531,8 @@ class AdvisorInterface:
         self.die_4_image.config(state=ACTIVE)
         self.die_5_image.config(state=ACTIVE)
 
-    # Checks how many score categories have not been scored, then returns an integer with the turns remaining.
-    def check_remaining_turns(self):
-        self.turns_remaining = int
+    # Checks how many score categories have not been scored, then returns an 
+    # integer with the turns remaining.
+    def check_remaining_turns(self, Calculator):
+        self.turns_remaining = Calculator.turns_remaining
 

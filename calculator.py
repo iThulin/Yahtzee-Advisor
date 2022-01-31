@@ -17,9 +17,11 @@ class Calculator:
         self.matches_2 = 0
         self.string_straight = ""
         self.rolls_remaining = 3
+        self.turns_remaining = int
 
-    # Search the hand_list and reroll all dice that have been marked (negative value or 0) then adjust rolls remaining
-    # variable
+    # Search the hand_list and reroll all dice that have been marked 
+    # (negative value or 0),
+    #  then adjust rolls remaining variable
     def roll_marked_dice(self):
         for index, die in enumerate(self.hand_list):
             if die <= 0:
@@ -35,9 +37,10 @@ class Calculator:
         self.matches = 0
         self.matches_2 = 0
         self.string_straight = ""
+        self.turns_remaining = 0
 
-    # Sum the value of all instances of a particular number in the hand.
-    # Then set self.score_temp equal to the sum of the number.
+    # Sum the value of all instances of a particular number in the hand,
+    # then set self.score_temp equal to the sum of the number.
     def calculate_1s(self):
         self.reset_temp_variables()
         for number in self.hand_list:
@@ -84,7 +87,8 @@ class Calculator:
             self.top_half_bonus = True
 
     # Determine if the hand contains 3 of the same number.
-    # # If this can be scored self.score_temp is set to the sum of all numbers in the hand.
+    # # If this can be scored self.score_temp is set to the sum of all numbers 
+    # in the hand.
     def calculate_3_of_a_kind(self):
         self.reset_temp_variables()
         for number in self.hand_list:
@@ -97,7 +101,8 @@ class Calculator:
                 self.score_temp += number
 
     # Determine if the hand contains 4 of the same number.
-    # If this can be scored self.score_temp is set to the sum of all numbers in the hand.
+    # If this can be scored self.score_temp is set to the sum of all numbers in 
+    # the hand.
     def calculate_4_of_a_kind(self):
         self.reset_temp_variables()
         for number in self.hand_list:
@@ -160,8 +165,21 @@ class Calculator:
         if self.matches == 4:
             self.score_temp = 50
 
-    # Sum of all dice in hand and set self.score_temp to the total.
+    # Sum of all dice in hand, set self.score_temp to the total, and decrement
+    # the turns remaining counter.
     def calculate_chance(self):
         self.reset_temp_variables()
         for number in self.hand_list:
             self.score_temp += number
+
+    # Checks which categories have been scored for the top and bottom half 
+    # score, then returns an int for how many turn remain for the player.
+    def calculate_turns_remaining(self):
+        self.reset_temp_variables()
+        for number in self.top_half_score:
+            if number == "":
+                self.turns_remaining += 1
+        for number in self.bottom_half_score:
+            if number == "":
+                self.turns_remaining += 1
+
